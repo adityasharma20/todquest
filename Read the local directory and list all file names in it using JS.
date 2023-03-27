@@ -1,0 +1,16 @@
+const fs = require('fs');
+
+// specify the directory path
+const directoryPath = './';
+
+// read the directory
+fs.readdir(directoryPath, function (err, files) {
+  if (err) {
+    console.log('Error getting directory information: ' + err);
+  } else {
+    // list all files in the directory
+    files.forEach(function (file) {
+      console.log(file);
+    });
+  }
+});
