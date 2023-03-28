@@ -1,0 +1,16 @@
+function isPrime(number) {
+  // Check if number is less than 2
+  if (number < 2) {
+    return false;
+  }
+
+  // Check if number is divisible by any number from 2 to number-1
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+
+  // If the loop completes without finding a divisor, the number is prime
+  return true;
+}
