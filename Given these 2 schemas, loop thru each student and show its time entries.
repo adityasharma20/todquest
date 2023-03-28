@@ -1,0 +1,44 @@
+const WorksnapsTimeEntry = BaseSchema.extend({
+  student: {
+    type: Schema.ObjectId,
+    ref: 'Student'
+  },
+  timeEntries: {
+    type: Object
+  }
+});
+
+const StudentSchema = BaseSchema.extend({
+  firstName: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+  lastName: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+  displayName: {
+    type: String,
+    trim: true
+  },
+  municipality: {
+    type: String
+  }
+});
+
+// assuming you have a list of WorksnapsTimeEntry objects called `timeEntriesList`
+timeEntriesList.forEach(function (entry) {
+  const studentId = entry.student;
+  const timeEntries = entry.timeEntries;
+
+  StudentSchema.findById(studentId, function (err, student) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(`Time entries for ${student.displayName}:`);
+      console.log(timeEntries);
+    }
+  });
+});
